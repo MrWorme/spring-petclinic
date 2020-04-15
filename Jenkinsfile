@@ -6,5 +6,20 @@ pipeline {
                 bat './mvnw package' 
             }
         }
+        stage('Test') {
+            steps {
+                bat './mvnw package' 
+            }
+        }
+        stage('Package') {
+            steps {
+                bat './mvnw package' 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                bat './mvnw package' 
+            }
+        }
     }
 }
