@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat './mvnw package' 
+                bat './mvnw build' 
             }
         }
         stage('Test') {
             steps {
-                bat './mvnw package' 
+                bat './mvnw test' 
             }
         }
         stage('Package') {
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat './mvnw package' 
+                bat './mvnw deploy' 
             }
         }
     }
