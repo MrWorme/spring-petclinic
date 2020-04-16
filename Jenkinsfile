@@ -26,13 +26,13 @@ pipeline {
     }
     post {
        success {
-                slackSend "Build Success "
+                slackSend  message: "Build Success "
        }
        failure {
-                slackSend "Build Failure"
+                slackSend  message: "Build Failure"
        }
        always {
-                slackSend "Build did"
+                slackSend  message: "Build did"
        }
     }
 }
