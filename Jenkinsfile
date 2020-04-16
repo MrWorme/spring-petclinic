@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                slackSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 bat './mvnw clean' 
             }
         }
@@ -24,5 +23,16 @@ pipeline {
                     bat './mvnw deploy' 
                 }                   
         }
+    }
+    post {
+       success {
+                slackSend "Build Success - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+       }
+       failure {
+                slackSend "Build Failure - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+       }
+       always {
+                slackSend "Build did - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+       }
     }
 }
