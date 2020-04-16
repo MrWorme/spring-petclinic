@@ -26,13 +26,10 @@ pipeline {
     }
     post {
        success {
-                slackSend  message: "Build Success "
+                slackSend  message: "Build Success - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
        }
        failure {
-                slackSend  message: "Build Failure"
+                slackSend  message: "Build Failure - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
        }
-       always {
-                slackSend  message: "Build did"
-       }
-    }
+   }
 }
